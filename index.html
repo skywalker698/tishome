@@ -1,24 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html lang="th">
 <head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>E-doc dis:papers</title>
 <style>
   body, html {
     margin: 0;
     height: 100%;
+    width: 100%;
     background: #f0f0f0;
     font-family: sans-serif;
+    overflow: hidden;
   }
   #loader {
     position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
+    inset: 0; /* shorthand top:0; left:0; right:0; bottom:0 */
     display: flex;
-    align-items: center; justify-content: center;
+    align-items: center;
+    justify-content: center;
     background: white;
-    z-index: 2;
-    transition: opacity 2s ease;
+    z-index: 999;
+    transition: opacity 1s ease;
     opacity: 1;
   }
   #loader.fadeout {
@@ -26,7 +29,8 @@
     pointer-events: none;
   }
   .bar-loader {
-    width: 100px;
+    width: 120px;
+    max-width: 60%;
     height: 14px;
     background: #ececec;
     border-radius: 7px;
@@ -44,12 +48,13 @@
   }
   @keyframes barmove {
     0% { left: -40px;}
-    100% { left: 100px;}
+    100% { left: 120px;}
   }
   #content-iframe {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
     border: none;
     opacity: 0;
     transition: opacity 0.8s cubic-bezier(.4,0,.2,1);
@@ -67,7 +72,7 @@
   </div>
 </div>
 <iframe id="content-iframe"
-        src="https://script.google.com/a/macros/ktisgroup.net/s/AKfycby4qjCa1Y2E9R8hWZjkkaRCGngxtDNN0tQ0cKumMFcJQ1Z022LahPgWKuqR7Bb5jeuvqQ/exec">
+        src="https://script.google.com/macros/s/AKfycbxckPWoG8Hyq3LINUbyOQMVC93jaKZnJwK-jVF-eVgGx9vW-Ad-6bHMxecaU72iIH80IA/exec">
 </iframe>
 <script>
   const loader = document.getElementById('loader');
@@ -77,8 +82,8 @@
     setTimeout(() => {
       loader.style.display = 'none';
       iframe.classList.add('visible');
-    }, 2000); // fadeout 2 วิ
-  }, 1500); // bar animation 1.5 วิ
+    }, 1000); // fadeout
+  }, 1500); // delay โหลด
 </script>
 </body>
 </html>
